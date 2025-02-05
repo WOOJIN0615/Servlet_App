@@ -27,10 +27,7 @@ public class DepartmentController extends HttpServlet {
         // TODO Auto-generated constructor stub
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
-    /**
+	/*
      * 서버 요청시
      * 1. URL(ip:port/경로)
      * 2. 메서드 형식
@@ -54,6 +51,11 @@ public class DepartmentController extends HttpServlet {
 		String method = request.getMethod();
 		StringBuffer sb = request.getRequestURL();
 		String uri = request.getRequestURI();
+		
+		//parameter
+		String department_id=request.getParameter("department_id");
+		
+		
 		uri=this.useToken(uri);
 		
 		DepartmentDAO departmentDAO = new DepartmentDAO();
@@ -94,6 +96,9 @@ public class DepartmentController extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
+		String method = request.getMethod();
+		StringBuffer url = request.getRequestURL();
+		String uri = request.getRequestURI();
 	}
 	
 	private String useToken(String data) {

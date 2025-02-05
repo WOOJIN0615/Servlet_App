@@ -10,23 +10,13 @@
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
   
-  <servlet>
-  	<servlet-name>departmentController</servlet-name>
-  	<servlet-class>com.woojin.app.departments.DepartmentController</servlet-class>
-  </servlet>
+  <filter>
+  	<filter-name>encode</filter-name>
+  	<filter-class>com.woojin.app.filters.EncodingFilter</filter-class>
+  </filter>
   
-  <servlet-mapping>
-  	<servlet-name>departmentController</servlet-name>
-  	<url-pattern>/departments/*</url-pattern>
-  </servlet-mapping>   
-  
-  <servlet>
-  	<servlet-name>locationController</servlet-name>
-  	<servlet-class>com.woojin.app.locations.LocationController</servlet-class>
-  </servlet>
-  
-  <servlet-mapping>
-  	<servlet-name>locationController</servlet-name>
-  	<url-pattern>/locations/*</url-pattern>
-  </servlet-mapping>
+  <filter-mapping>
+  	<filter-name>encode</filter-name>
+  	<url-pattern>/*</url-pattern>
+  </filter-mapping>
 </web-app>

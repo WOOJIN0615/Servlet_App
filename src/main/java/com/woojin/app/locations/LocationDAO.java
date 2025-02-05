@@ -10,6 +10,28 @@ import com.woojin.app.utils.DBConnection;
 
 public class LocationDAO {
 	
+	public int add(LocationDTO locationDTO) throws Exception {
+		int result=0;
+		Connection conn = DBConnection.getConnection();
+		String sql = "INSERT INTO LOCATIONS (LOCATION_ID, STREET_ADDRESS, POSTAL_CODE, CITY, STATE_PROVINCE, COUNTRY_ID)"
+				+" VALUES (LOCATIONS_SEQ.NEXTVAL, ?, ?, ?, ?, ?)";
+		PreparedStatement ps = conn.prepareStatement(sql);
+		
+		ps.setString(1, locationDTO.getStreet_address());
+		ps.setString(2, locationDTO.getPostal_code());
+		ps.setString(3, locationDTO.getCity());
+		ps.setString(4, locationDTO.getState_province());
+		ps.setString(5, locationDTO.getCountry_id());
+		
+		result=ps.executeUpdate();
+		
+		DBConnection.disConnection(ps, conn);
+		
+		
+		
+		return result;
+	}
+	
 	//지역 정보
 	public List<LocationDTO> getList() throws Exception {
 		Connection conn = DBConnection.getConnection();
@@ -30,12 +52,37 @@ public class LocationDAO {
 			ar.add(locationDTO);
 		}
 		
-		DBConnection.disConnection(ps, conn, rs);
+		DBConnection.disConnection(rs, ps, conn);  ;
 		return ar;
 	}
 	
-	public void getDetail() {
+	public LocationDTO getDetail(LocationDTO locationDTO) throws Exception {
 		System.out.println("한 지역 상세 정보");
+		
+		Connection conn = DBConnection.getConnection();
+		String sql="SELECT * FROM LOCATIONS WHERE LOCATION_ID=?";
+		
+		PreparedStatement ps = conn.prepareStatement(sql);
+		ps.setLong(1, locationDTO.getLocation_id());
+		ResultSet rs = ps.executeQuery();
+		
+		if(rs.next()) {
+			locationDTO.setLocation_id(rs.getLong("location_id"));
+			locationDTO.setStreet_address(rs.getString("street_address"));
+			locationDTO.setPostal_code(rs.getString("postal_code"));
+			locationDTO.setState_province(rs.getString("state_province"));
+			locationDTO.setCountry_id(rs.getString("country_id"));
+		}else {
+			locationDTO=null;
+		}
+		
+		DBConnection.disConnection(rs, ps, conn);
+		return locationDTO;
+	}
+
+	public void getDetail() {
+		// TODO Auto-generated method stub
+		
 	}
 	
 }
