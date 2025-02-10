@@ -14,6 +14,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<%@ include file="../template/common.jsp" %>
 <style type="text/css">
 	table {
 		width: 40%;
@@ -29,7 +30,8 @@
 	<table style="text-align: center; width: 400px" border=1>
 		<thead>
 			<tr>
-				<th>부서번호</th><th>부서명</th>
+				<th>부서번호</th>
+				<th>부서명</th>
 			</tr>
 		</thead>
 		<%for (int i=0; i<ar.size(); i++) {%>
