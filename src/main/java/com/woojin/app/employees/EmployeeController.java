@@ -32,8 +32,6 @@ public class EmployeeController extends HttpServlet {
 		String method = request.getMethod();
 		StringBuffer url = request.getRequestURL();
 		String uri = request.getRequestURI();
-		
-		String employee_id = ;
 	}
 
 	/**
