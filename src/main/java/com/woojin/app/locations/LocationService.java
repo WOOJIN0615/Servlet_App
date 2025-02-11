@@ -11,7 +11,7 @@ public class LocationService {
 	private LocationDAO locationDAO;
 	
 	public LocationService() {
-		locationDAO = new LocationDAO();
+		this.locationDAO = new LocationDAO();
 	}
 	
 	public ActionForward getList(HttpServletRequest request, ActionForward af) throws Exception {
