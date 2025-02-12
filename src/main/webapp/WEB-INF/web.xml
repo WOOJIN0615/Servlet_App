@@ -54,4 +54,14 @@
   	<url-pattern>/locations/*</url-pattern>
   </servlet-mapping>
   
+  <servlet>
+  	<servlet-name>employeeController</servlet-name>
+  	<servlet-class>com.woojin.app.employees.EmployeeController</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>employeeController</servlet-name>
+  	<url-pattern>/employees/*</url-pattern>
+  </servlet-mapping>
+  
 </web-app>

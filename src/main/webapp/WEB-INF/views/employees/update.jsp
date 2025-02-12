@@ -14,7 +14,13 @@
 			<c:import url="/WEB-INF/views/template/nav.jsp"></c:import>
 			<div class="right contents_right">
 				<!-- contents 내용 기술 -->
-			
+				
+				<form action="update.do" method="post">
+					<input type="hidden" name="employee_id" value="${dto.employee_id}">
+					<input type="text" name="first_name" value="${dto.first_name}">
+					<input type="text" name="last_name" value="${dto.last_name}">
+					<button type="submit">변경</button>
+				</form>
 			</div>
 	
 		</section>	

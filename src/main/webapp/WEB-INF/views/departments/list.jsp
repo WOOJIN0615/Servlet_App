@@ -1,26 +1,18 @@
-<%@page import="com.woojin.app.departments.DepartmentDTO"%>
-<%@page import="com.woojin.app.departments.DepartmentDAO"%>
-<%@page import="java.util.List"%>
-<%@page import="com.woojin.app.departments.DepartmentDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%
-//스크립틀릿
-	Object ar = request.getAttribute("list");
-	List<DepartmentDTO> list = (List<DepartmentDTO>)ar;
-%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<%@ include file="../template/common.jsp"%>
+<c:import url="../template/common.jsp"></c:import>
 <link rel="stylesheet" href="../resources/css/list.css">
 </head>
 <body>
-	<%@ include file="../template/header.jsp"%>
+	<c:import url="../template/header.jsp"></c:import>
 	<section class="wrap_left contents">
-		<%@ include file="../template/nav.jsp"%>
+		<c:import url="../template/nav.jsp"></c:import>
 		<div class="right contents_right">
 			<div class="contents_right_list">
 				<table class="table_sprite">
@@ -31,18 +23,23 @@
 						</tr>
 					</thead>
 					<tbody>
-						<%
-						for (int i = 0; i < list.size(); i++) {
-						%>
-						<tr>
-							<td><%=list.get(i).getDepartment_id()%></td>
-							<td><a
-								href="./detail.do?department_id=<%=list.get(i).getDepartment_id()%>"><%=list.get(i).getDepartment_name()%></a>
-							</td>
-						</tr>
-						<%
-						}
-						%>
+						<c:forEach items="${list}" var="d" varStatus="st">
+							<tr>
+								<td>
+									${d.department_id}
+							   <%-- <h2>현재 아이템 : ${st.current}</h2>
+									<h4>인덱스 번호 : ${st.index}</h4>
+									<h4>순서 번호 : ${st.count}</h4>
+									<h4>시작 여부 : ${st.first}</h4>
+									<h4>종료 여부 : ${st.last}</h4> --%>
+								</td>
+								<td><a
+									href="./detail.do?department_id=${d.department_id}">${d.department_name}</a>
+								</td>
+							</tr>
+						
+						</c:forEach>
+						
 					</tbody>
 				</table>
 			</div>
@@ -55,9 +52,7 @@
 
 	</section>
 
-	<%@ include file="../template/footer.jsp"%>
-
-
-
+	<c:import url="../template/footer.jsp"></c:import>
+	
 </body>
 </html>

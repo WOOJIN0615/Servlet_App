@@ -14,7 +14,19 @@
 			<c:import url="/WEB-INF/views/template/nav.jsp"></c:import>
 			<div class="right contents_right">
 				<!-- contents 내용 기술 -->
-			
+				
+				<div>
+					<h3>ID : ${sessionScope.user.employee_id}</h3>
+					<h3>FirstName : ${sessionScope.user.first_name}</h3>
+					<h3>LastName : ${requestScope.user.last_name}</h3>
+					<h3>Email : ${requestScope.user.email}</h3>
+				</div>
+				<div>
+					<a href="./update.do">정보 수정</a>
+				</div>
+				
+				
+				
 			</div>
 	
 		</section>	

@@ -8,6 +8,8 @@ import java.util.List;
 
 import com.woojin.app.utils.DBConnection;
 
+import oracle.jdbc.proxy.annotation.Pre;
+
 public class LocationDAO {
 	
 	public int add(LocationDTO locationDTO) throws Exception {
@@ -71,6 +73,7 @@ public class LocationDAO {
 			locationDTO.setLocation_id(rs.getLong("location_id"));
 			locationDTO.setStreet_address(rs.getString("street_address"));
 			locationDTO.setPostal_code(rs.getString("postal_code"));
+			locationDTO.setCity(rs.getString("city"));
 			locationDTO.setState_province(rs.getString("state_province"));
 			locationDTO.setCountry_id(rs.getString("country_id"));
 		}else {
@@ -83,6 +86,29 @@ public class LocationDAO {
 
 	public void getDetail() {
 		// TODO Auto-generated method stub
+		
+	}
+	
+	public int update(LocationDTO locationDTO) throws Exception {
+		Connection conn = DBConnection.getConnection();
+		String sql = "UPDATE LOCATIONS SET STREET_ADDRESS=? POSTAL_CODE=? CITY=? STATE_PROVINCE=? COUNTRY_ID=? WHERE LOCATION_ID=?";
+		int result=0;
+		
+		PreparedStatement ps = conn.prepareStatement(sql);
+		
+		ps.setString(1, locationDTO.getStreet_address());
+		ps.setString(2, locationDTO.getPostal_code());
+		ps.setString(3, locationDTO.getCity());
+		ps.setString(4, locationDTO.getState_province());
+		ps.setString(5, locationDTO.getCountry_id());
+		ps.setLong(6, locationDTO.getLocation_id());
+		
+		result=ps.executeUpdate();
+		
+		DBConnection.disConnection(ps, conn);
+		
+		return result;
+		
 		
 	}
 	

@@ -1,11 +1,8 @@
-<%@page import="com.woojin.app.departments.DepartmentDTO"%>
-<%@page import="com.woojin.app.departments.DepartmentDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%
-		DepartmentDTO departmentDTO=(DepartmentDTO)request.getAttribute("dto");
-    	
-    %>
+<%@
+	taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,15 +12,36 @@
 <body>
 	<h1>Department Detail Page</h1>
 	
-	<%if(departmentDTO!=null){ %>
-		<h3><%=departmentDTO.getDepartment_id() %></h3>
-		<h3><%=departmentDTO.getDepartment_name() %></h3>
-		<h3><%=departmentDTO.getManager_id() %></h3>
+		<c:choose>
+			<c:when test="${not empty dto}">
+				<h3>${dto.department_id}</h3>
+				<h3>${dto.department_name}</h3>
+				<h3>${dto.manager_id}</h3>
+				
+				<a href="./update.do?department_id=${requestScope.dto.department_id}">부서 수정</a>
+				<a href="./delete.do?department_id=${requestScope.dto.department_id}">부서 삭제</a>
+			</c:when>
+			<c:otherwise>
+				<h3>부서 정보가 없습니다.</h3>
+			</c:otherwise>
+		</c:choose>	
+			
 		
-		<a href="./update.do?department_id=<%= departmentDTO.getDepartment_id() %>">부서 수정</a>
-		<a href="./delete.do?department_id=<%= departmentDTO.getDepartment_id() %>">부서삭제</a>
-	<%}else { %>
-		<h3>없는 부서입니다.</h3>
-	<%} %>
+		
+	
+<%-- 		<c:if test="${not empty dto}">
+		<h3>${dto.department_id}</h3>
+		<h3>${dto.department_name}</h3>
+		<h3>${dto.manager_id}</h3>
+		
+		<a href="./update.do?department_id=${requestScope.dto.department_id}">부서 수정</a>
+		<a href="./delete.do?department_id=${requestScope.dto.department_id}">부서삭제</a>
+		</c:if>
+		
+		<c:if test="${empty dto}">
+			<h3>부서 정보가 없습니다.</h3>
+		</c:if> --%>
+		
+	
 </body>
 </html>

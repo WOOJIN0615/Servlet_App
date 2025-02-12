@@ -49,12 +49,16 @@ public class DepartmentService {
 		departmentDTO.setManager_id(Long.parseLong(manager));
 		departmentDTO.setLocation_id(Long.parseLong(location));
 		int result = departmentDAO.add(departmentDTO);
-		String str="부서 등록 실패";
+		String str="";
 		if (result>0) {
+			System.out.println("y");
 			str="부서 등록 성공";
+		}else {
+			System.out.println("n");
+			str="부서 등록 실패";			
 		}
 		request.setAttribute("result", str);
-		
+		request.setAttribute("path", "./list.do");
 		af.setFlag(true);
 		af.setPath("/WEB-INF/views/commons/result.jsp");
 	}
@@ -88,7 +92,7 @@ public class DepartmentService {
 			str="부서명 수정 성공";
 		}
 		request.setAttribute("result", str);
-		
+		request.setAttribute("path", "./list.do");
 		af.setFlag(true);
 		af.setPath("/WEB-INF/views/commons/result.jsp");
 	}
@@ -102,7 +106,7 @@ public class DepartmentService {
 			str="부서 삭제 성공";
 		}
 		request.setAttribute("result", str);
-		
+		request.setAttribute("path", "./list.do");
 		af.setFlag(true);
 		af.setPath("/WEB-INF/views/commons/result.jsp");
 		

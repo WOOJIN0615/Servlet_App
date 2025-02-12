@@ -11,10 +11,11 @@ public class EmployeeDTO {
 	private String phone_number;
 	private Date hire_date;
 	private String job_id;
-	private long salary;
-	private long commission_pct;
+	private double salary;
+	private double commission_pct;
 	private long manager_id;
 	private long department_id;
+	private String password;
 	
 	
 	public long getEmployee_id() {
@@ -59,16 +60,16 @@ public class EmployeeDTO {
 	public void setJob_id(String job_id) {
 		this.job_id = job_id;
 	}
-	public long getSalary() {
+	public double getSalary() {
 		return salary;
 	}
-	public void setSalary(long salary) {
+	public void setSalary(double salary) {
 		this.salary = salary;
 	}
-	public long getCommission_pct() {
+	public double getCommission_pct() {
 		return commission_pct;
 	}
-	public void setCommission_pct(long commission_pct) {
+	public void setCommission_pct(double commission_pct) {
 		this.commission_pct = commission_pct;
 	}
 	public long getManager_id() {
@@ -82,6 +83,12 @@ public class EmployeeDTO {
 	}
 	public void setDepartment_id(long department_id) {
 		this.department_id = department_id;
+	}
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 }
