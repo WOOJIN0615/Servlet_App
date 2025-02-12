@@ -27,6 +27,11 @@ public class UserService {
 		if (result>0) {
 			str="가입 성공";
 		}
+		request.setAttribute("result", str);
+		request.setAttribute("path", "../index.do");
+		
+		af.setFlag(false);
+		af.setPath("/WEB-INF/views/commons/result.jsp");
 		
 	}
 
