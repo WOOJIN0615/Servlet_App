@@ -29,16 +29,19 @@ public class AccountService {
 		request.setAttribute("path", "./list.do");
 		
 		af.setFlag(true);
-		af.setPath("/WEB-INF/views/commons/result.do");
+		af.setPath("/WEB-INF/views/commons/result.jsp");
 		
 	}
 	
-	public void getList(HttpServletRequest request, ActionForward af) throws Exception {
-		List<AccountDTO> ar = new ArrayList<AccountDTO>();
-		request.setAttribute("list", ar);
+	public ActionForward getList(HttpServletRequest request, ActionForward af) throws Exception {
+		AccountDTO accountDTO = (AccountDTO)request.getSession().getAttribute("list");
 		
+		List<AccountDTO> ar = acconutDAO.getList(accountDTO);
+		request.setAttribute("list", ar);
 		af.setFlag(true);
-		af.setPath("/WEB-INF/views/accounts.list.do");
+		af.setPath("/WEB-INF/views/accounts/list.jsp");
+		
+		return af;
 		
 	}
 }

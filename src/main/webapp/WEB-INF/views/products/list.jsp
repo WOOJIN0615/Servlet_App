@@ -14,6 +14,7 @@
 			<c:import url="/WEB-INF/views/template/nav.jsp"></c:import>
 			<div class="right contents_right">
 				<!-- contents 내용 기술 -->
+				<h1>여기오냐?</h1>
 			
 			</div>
 	

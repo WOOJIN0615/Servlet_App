@@ -37,8 +37,9 @@ public class UserService {
 	}
 	
 	public void detail(HttpServletRequest request, ActionForward af) throws Exception {
-		UserDTO userDTO = (UserDTO)request.getSession().getAttribute("user");
 		
+		UserDTO userDTO = (UserDTO)request.getSession().getAttribute("user");
+		//System.out.println(userDTO);
 		UserDTO result = userDAO.detail(userDTO);
 		request.setAttribute("user", result);
 		
@@ -61,10 +62,10 @@ public class UserService {
 			af.setFlag(false);
 			af.setPath("../index.do");
 		}else {
-			request.setAttribute("user", "로그인 실패");
+			request.setAttribute("result", "로그인 실패");
 			request.setAttribute("path", "login.do");
 			af.setFlag(true);
-			af.setPath("/WEB-INF/views/users/login.do");
+			af.setPath("/WEB-INF/views/users/login.jsp");
 		}
 	}
 

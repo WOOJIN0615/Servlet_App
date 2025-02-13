@@ -50,7 +50,7 @@ public class AccountController extends HttpServlet {
 					accountService.join(request, af);
 				}else {
 					af.setFlag(true);
-					af.setPath("/WEB-INF/views/accounts/add.do");
+					af.setPath("/WEB-INF/views/accounts/add.jsp");
 				}
 				break;
 			}

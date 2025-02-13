@@ -53,9 +53,10 @@ public class UserDAO {
 	public UserDTO detail(UserDTO userDTO) throws Exception {
 		Connection conn = DBConnection.getConnection();
 		String sql = "SELECT * FROM USERS WHERE USERNAME=?";
-		PreparedStatement ps = conn.prepareStatement(sql);
 		
+		PreparedStatement ps = conn.prepareStatement(sql);
 		ps.setString(1, userDTO.getUsername());
+		
 		ResultSet rs = ps.executeQuery();	
 		UserDTO result = null;
 		
@@ -66,11 +67,10 @@ public class UserDAO {
 			result.setName(rs.getString("NAME"));
 			result.setPhone(rs.getString("PHONE"));
 			result.setEmail(rs.getString("EMAIL"));
-					
 		}
 		DBConnection.disConnection(rs, ps, conn);
 		
-		return userDTO;
+		return result;
 	}
 	
 	public void update() {

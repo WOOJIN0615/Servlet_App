@@ -39,6 +39,27 @@
   	<servlet-name>userController</servlet-name>
   	<url-pattern>/users/*</url-pattern>
   </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>accountController</servlet-name>
+  	<servlet-class>com.woojin.app.accounts.AccountController</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>accountController</servlet-name>
+  	<url-pattern>/accounts/*</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>productController</servlet-name>
+  	<servlet-class>com.woojin.app.products.ProductController</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>productController</servlet-name>
+  	<url-pattern>/products/*</url-pattern>
+  </servlet-mapping>
+  
 
   
 </web-app>

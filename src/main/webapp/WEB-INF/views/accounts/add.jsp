@@ -14,6 +14,12 @@
 			<c:import url="/WEB-INF/views/template/nav.jsp"></c:import>
 			<div class="right contents_right">
 				<!-- contents 내용 기술 -->
+				<h1>부서 추가 페이지</h1>
+	
+	<form action="./add.do" method="post">
+		<input type="text" placeholder="계좌번호를 입력하세요." name="account_num"><br>
+		<input type="submit" value="등록">  
+	</form>
 			
 			</div>
 	

@@ -25,11 +25,17 @@
 					<tbody>
 						<c:forEach items="${list}" var="d" varStatus="st">
 							<tr>
-								<td>
-									${d.department_id}
-								</td>
 								<td><a
-									href="./detail.do?department_id=${d.department_id}">${d.department_name}</a>
+									href="./detail.do?department_id=${d.account_num}">${d.account_num}</a>
+								</td>
+								<td>
+									${d.product_num}
+								</td>
+								<td>
+									${d.account_bal}
+								</td>
+								<td>
+									${d.account_date}
 								</td>
 							</tr>
 						

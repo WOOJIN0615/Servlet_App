@@ -39,10 +39,10 @@ public class ProductDAO {
 	
 	public ProductDTO getDetail(ProductDTO productDTO) throws Exception {
 		Connection conn = DBConnection.getConnection();
-		String sql = "SELECT * FROM PRODUCTS WHERE PRODUCT_ID=?";
+		String sql = "SELECT * FROM PRODUCTS WHERE PRODUCT_NAME=?";
 		PreparedStatement ps = conn.prepareStatement(sql);
 		
-		ps.setLong(1, productDTO.getProduct_id());
+		ps.setString(1, productDTO.getProduct_name());
 		
 		ResultSet rs = ps.executeQuery();
 		
@@ -65,14 +65,13 @@ public class ProductDAO {
 	public int add(ProductDTO productDTO) throws Exception {
 		Connection conn = DBConnection.getConnection();
 		
-		String sql = "INSERT INTO PRODUCTS (PRODUCT_ID=?, PRODUCT_NAME=?, PRODUCT_DETAIL=?, PRODUCT_DATE=?, PRODUCT_RATE=?)"
-				+" VALUES (PRODUCTNUM_SEQ.NEXTVAL, ?, ?, ?, ?)";
+		String sql = "INSERT INTO PRODUCTS (PRODUCT_ID, PRODUCT_NAME, PRODUCT_DETAIL, PRODUCT_DATE, PRODUCT_RATE)"
+				+" VALUES (PRODUCTNUM_SEQ.NEXTVAL, ?, ?, SYSDATE, ?)";
 		PreparedStatement ps = conn.prepareStatement(sql);
 		
 		ps.setString(1, productDTO.getProduct_name());
 		ps.setString(2, productDTO.getProduct_detail());
-		ps.setDate(3, productDTO.getProduct_date());
-		ps.setLong(4, productDTO.getProduct_rate());
+		ps.setLong(3, productDTO.getProduct_rate());
 		
 		int result=ps.executeUpdate();
 		

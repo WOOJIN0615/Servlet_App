@@ -35,6 +35,22 @@ public class ProductController extends HttpServlet {
 		af.setFlag(true);
 		af.setPath("WEB-INF/views/errors/notfound.jsp");
 		
+		try {
+			switch(uri) {
+			case "list.do":
+				productService.getList(request, af);
+				break;
+			case "detail.do":
+				productService.getDetail(request, af);
+				break;
+			case "update.do":
+				
+			}
+			
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+		
 		
 	}
 
