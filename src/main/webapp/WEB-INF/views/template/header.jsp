@@ -7,6 +7,19 @@
 			<div class="left logo">
 				<img src="/resources/images/logo.png" alt="" srcset="">
 			</div>
+			
+			<nav class="center list">
+				<ul>
+					<li><a href="/products/list.do">상품정보</a></li>
+					<li><a href="/accounts/list.do">계좌정보</a></li>
+					<li><a href="trades/list.do">거래내역</a></li>
+					<li><a href="carts/list.do">장바구니</a></li>
+				</ul>
+
+			</nav>
+			
+			
+		
 			<div class="right menu">
 				<ul>
 					<c:if test="${empty user}">

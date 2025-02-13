@@ -13,7 +13,6 @@
 		<!--Sementic tag-->
 		<c:import url="/WEB-INF/views/template/common.jsp"></c:import>
 		<section class="wrap_left contents">
-			<c:import url="./template/nav.jsp"></c:import>
 			<div class="right contents_right">
 			
 			

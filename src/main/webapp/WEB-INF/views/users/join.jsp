@@ -14,7 +14,15 @@
 			<c:import url="/WEB-INF/views/template/nav.jsp"></c:import>
 			<div class="right contents_right">
 				<!-- contents 내용 기술 -->
-				
+				   <h1 style="text-align: center">회원가입</h1>
+					<form action="./join.do" method="post" style="text-align: center">
+						<input type="text" name="username" placeholder="ID를 입력하세요" style="width: 246px; text-align: center"><br><br>
+						<input type="text" name="password" placeholder="비밀번호를 입력하세요" style="width: 246px; text-align: center"><br><br>
+						<input type="text" name="name" placeholder="이름을 입력하세요" style="width: 246px; text-align: center"><br><br>
+						<input type="text" name="phone" placeholder="휴대폰번호를 입력하세요" style="width: 246px; text-align: center"><br><br>
+						<input type="text" name="email" placeholder="이메일을 입력하세요" style="width: 246px; text-align: center"><br><br>
+						<input type="submit" value="가입">
+					</form>
 			</div>
 	
 		</section>	

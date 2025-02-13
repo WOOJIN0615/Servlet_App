@@ -9,12 +9,21 @@
 }
 
 .right {
-    width: 85%;
-    height: 100%;
+    width: 30%;
+    height: 100%;  
+}
+
+.center {
+	width: 55%;
+	height: 100%;
 }
 
 .menu {
     border-left: 1px solid #000000192192192;
+}
+
+.list {
+	border-left: 1px solid #000000192192192;
 }
 
 /* header */
@@ -31,8 +40,22 @@ header {
     box-sizing: border-box;
 }
 
+.list {
+	display: flex;
+	justify-content: center;
+}
 
+.list > ul {
+	display: flex;
+	width:500px;
+	justify-content: space-between;
+	line-height: 70px;
+}
 
+.list > ul > li {
+	font-weight: bold;
+
+}
 
 .menu {
     display: flex;
@@ -43,8 +66,9 @@ header {
 }
 .menu > ul > li {
 	line-height: 70px;
-	margin-right: 30px;
+	margin-right: 20px;
 	font-weight: bold;
+	margin-left: 20px;
 }
 
 /* contents */
