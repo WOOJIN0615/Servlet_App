@@ -13,7 +13,30 @@
 		<section class="wrap_left contents">
 			<c:import url="/WEB-INF/views/template/nav.jsp"></c:import>
 			<div class="right contents_right">
-				<!-- contents 내용 기술 -->
+				<table class="table_sprite">
+					<thead>
+						<tr>
+							<th>계좌번호</th>
+							<th>상품번호</th>
+							<th>잔액</th>
+							<th>가입일</th>
+						</tr>
+					</thead>
+					<tbody>
+						<c:forEach items="${list}" var="d" varStatus="st">
+							<tr>
+								<td>
+									${d.department_id}
+								</td>
+								<td><a
+									href="./detail.do?department_id=${d.department_id}">${d.department_name}</a>
+								</td>
+							</tr>
+						
+						</c:forEach>
+						
+					</tbody>
+				</table>
 			
 			</div>
 	
