@@ -1,6 +1,8 @@
 package com.woojin.app.products;
 
 import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -49,6 +51,12 @@ public class ProductController extends HttpServlet {
 			
 		}catch (Exception e) {
 			e.printStackTrace();
+		}
+		if(af.isFlag()) {
+			RequestDispatcher view = request.getRequestDispatcher(af.getPath());
+			view.forward(request, response);		
+		}else {
+			response.sendRedirect(af.getPath());
 		}
 		
 		

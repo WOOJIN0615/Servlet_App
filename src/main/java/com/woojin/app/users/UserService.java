@@ -2,6 +2,7 @@ package com.woojin.app.users;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import javax.swing.Action;
 
 import com.woojin.app.ActionForward;
 
@@ -11,6 +12,27 @@ public class UserService {
 	
 	public UserService() {
 		this.userDAO = new UserDAO();
+	}
+	
+	public void update(HttpServletRequest request, ActionForward af) throws Exception {
+		UserDTO session = (UserDTO)request.getSession().getAttribute("user");
+		UserDTO userDTO = new UserDTO();
+		System.out.println("서비스업데이트");
+		userDTO.setPassword(request.getParameter("password"));
+		userDTO.setName(request.getParameter("name"));
+		userDTO.setPhone(request.getParameter("phone"));
+		userDTO.setEmail(request.getParameter("email"));
+		userDTO.setUsername(session.getUsername());  
+		
+		int result = userDAO.update(userDTO);
+		
+		if (result>0) {
+			session.setPassword(userDTO.getPassword());
+		}
+		
+		af.setFlag(false);
+		af.setPath("./mypage.do");
+		
 	}
 	
 	public void join(HttpServletRequest request, ActionForward af) throws Exception {
@@ -31,7 +53,7 @@ public class UserService {
 		request.setAttribute("result", str);
 		request.setAttribute("path", "../index.do");
 		
-		af.setFlag(false);
+		af.setFlag(true);
 		af.setPath("/WEB-INF/views/commons/result.jsp");
 		
 	}

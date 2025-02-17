@@ -15,13 +15,15 @@
 			<div class="right contents_right">
 				<!-- contents 내용 기술 -->
 				<div>
-					<h2>USERNAME : ${user.username}</h2>
-					<h2>NAME : ${user.name}</h2>
-					<h2>PHONE : ${user.phone}</h2>
-					<h2>EMAIL : ${user.email}</h2>
+					<h2>USERNAME : <input type="text" placeholder="${user.username}" readonly></h2>
+					<h2>PASSWORD : <input type="password" placeholder="${user.password}"></h2>
+					<h2>NAME : <input type="text" placeholder="${user.name}" readonly></h2>
+					<h2>PHONE : <input type="text" placeholder="${user.phone}" readonly></h2>
+					<h2>EMAIL : <input type="text" placeholder="${user.email}" readonly></h2>
+				
 				</div>
 				<div>
-					<a href="./update.do">정보 수정</a>
+					<a href="update.do">정보 수정</a>
 				</div>
 			</div>
 	

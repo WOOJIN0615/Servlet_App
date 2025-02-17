@@ -6,32 +6,20 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.woojin.app.users.UserDTO;
 import com.woojin.app.utils.DBConnection;
 
 public class AcconutDAO {
 	
-	public int join(AccountDTO accountDTO) throws Exception {
-		Connection conn = DBConnection.getConnection();
-		String sql = "INSERT INTO ACCOUNTS (ACCOUNT_NUM, ACCOUNT_BAL, ACCOUNT_DATE) VALUES (?, 0, SYSDATE)";
-		
-		PreparedStatement ps = conn.prepareStatement(sql);
-		ps.setString(1, accountDTO.getAcc_num());
-		
-		int result = ps.executeUpdate();
-		
-		DBConnection.disConnection(ps, conn);
-		
-		return result;
-	}
-	
-	public List<AccountDTO> getList(AccountDTO accountDTO) throws Exception {
+	public List<AccountDTO> getList(UserDTO userDTO) throws Exception {
 		Connection conn = DBConnection.getConnection();
 		String sql = "SELECT * FROM ACCOUNTS WHERE USERNAME=?";
 		
 		PreparedStatement ps = conn.prepareStatement(sql);
 		List<AccountDTO> ar = new ArrayList<AccountDTO>();
+		AccountDTO accountDTO = new AccountDTO();
 		
-		ps.setString(1, accountDTO.getUsername());
+		ps.setString(1, userDTO.getUsername());
 		
 		ResultSet rs = ps.executeQuery();
 		
@@ -48,5 +36,5 @@ public class AcconutDAO {
 		
 		return ar;
 	}
-
+	
 }

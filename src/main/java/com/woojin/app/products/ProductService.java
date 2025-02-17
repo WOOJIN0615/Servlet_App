@@ -12,12 +12,14 @@ public class ProductService {
 	private ProductDAO productDAO;
 	
 	public ProductService() {
-		productDAO = new ProductDAO();
+		this.productDAO = new ProductDAO();
 	}
 	
 	public ActionForward getList(HttpServletRequest request, ActionForward af) throws Exception {
 		List<ProductDTO> ar = productDAO.getList();
 		request.setAttribute("list", ar);
+		System.out.println("proser");
+		
 		af.setFlag(true);
 		af.setPath("/WEB-INF/views/products/list.jsp");
 		
@@ -29,6 +31,7 @@ public class ProductService {
 		ProductDTO productDTO = new ProductDTO();
 		productDTO.setProduct_name(name);
 		productDTO = productDAO.getDetail(productDTO);
+		request.setAttribute("dto", productDTO);
 		
 		af.setFlag(true);
 		af.setPath("/WEB-INF/views/products/detail.jsp");

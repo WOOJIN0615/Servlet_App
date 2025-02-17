@@ -73,8 +73,22 @@ public class UserDAO {
 		return result;
 	}
 	
-	public void update() {
+	public int update(UserDTO userDTO) throws Exception {
+		Connection conn = DBConnection.getConnection();
+		String sql = "UPDATE USERS SET PASSWORD=?, NAME=?, PHONE=?, EMAIL=? WHERE USERNAME=?";
+		PreparedStatement ps = conn.prepareStatement(sql);
+		System.out.println("dao업데이트");
+		ps.setString(1, userDTO.getPassword());
+		ps.setString(2, userDTO.getName());
+		ps.setString(3, userDTO.getPhone());
+		ps.setString(4, userDTO.getEmail());
+		ps.setString(5, userDTO.getUsername());
 		
+		int result = ps.executeUpdate();
+		
+		DBConnection.disConnection(ps, conn);
+		
+		return result;
 	}
 
 }

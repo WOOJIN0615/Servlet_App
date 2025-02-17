@@ -9,6 +9,7 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.woojin.app.ActionForward;
 
@@ -25,7 +26,7 @@ public class UserController extends HttpServlet {
      */
     public UserController() {
         super();
-        userService = new UserService();
+        this.userService = new UserService();
     }
 
 	/**
@@ -70,6 +71,22 @@ public class UserController extends HttpServlet {
 					af.setPath("/WEB-INF/views/users/login.jsp");
 				}
 				break;
+			case "update.do" :
+				String me = request.getMethod();
+				
+				if (me.toUpperCase().equals("POST")) {
+					userService.update(request, af);
+				}else {
+					userService.detail(request, af);
+					af.setFlag(true);
+					af.setPath("/WEB-INF/views/users/update.jsp");
+				}
+				break;
+			case "logout.do" :
+				HttpSession session = request.getSession();
+				session.invalidate();
+				af.setFlag(false);
+				af.setPath("../index.do");
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

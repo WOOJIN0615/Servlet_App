@@ -14,14 +14,18 @@
 			<c:import url="/WEB-INF/views/template/nav.jsp"></c:import>
 			<div class="right contents_right">
 				<!-- contents 내용 기술 -->
-				<h1>부서 추가 페이지</h1>
-	
-	<form action="./add.do" method="post">
-		<input type="text" placeholder="계좌번호를 입력하세요." name="account_num"><br>
-		<input type="submit" value="등록">  
-	</form>
+				<form action="update.do" method="post">
+					<h2>PASSWORD : </h2><input type="password" name="password" value="${sessionScope.user.password}">
+					<h2>NAME : </h2><input type="text" name="name" value="${requsetScope.user.name}">
+					<h2>PHONE : </h2> <input type="text" name="phone" value="${requsetScope.user.phone}">
+					<h2>EMAIL : </h2><input type="text" name="email" value="${requsetScope.user.email}">
+				
+					<button type="submit">수정</button>
+				</div>
+				
+				</form>
 			
-			</div>
+			
 	
 		</section>	
 	

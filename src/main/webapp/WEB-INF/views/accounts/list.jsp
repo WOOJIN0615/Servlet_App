@@ -7,6 +7,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <c:import url="/WEB-INF/views/template/common.jsp"></c:import>
+<link rel="stylesheet" href="../resources/css/list.css">
 </head>
 <body>
 	<c:import url="/WEB-INF/views/template/header.jsp"></c:import>
@@ -23,20 +24,12 @@
 						</tr>
 					</thead>
 					<tbody>
-						<c:forEach items="${list}" var="d" varStatus="st">
+						<c:forEach items="${list}" var="d">
 							<tr>
-								<td><a
-									href="./detail.do?department_id=${d.account_num}">${d.account_num}</a>
-								</td>
-								<td>
-									${d.product_num}
-								</td>
-								<td>
-									${d.account_bal}
-								</td>
-								<td>
-									${d.account_date}
-								</td>
+								<td>${d.acc_num}</td>
+								<td>${d.pro_num}</td>
+								<td>${d.acc_balance}</td>
+								<td>${d.acc_date}</td>
 							</tr>
 						
 						</c:forEach>

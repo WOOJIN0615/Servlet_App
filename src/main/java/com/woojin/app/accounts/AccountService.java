@@ -6,38 +6,23 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 
 import com.woojin.app.ActionForward;
+import com.woojin.app.users.UserDTO;
 
 public class AccountService {
 	
-	private AcconutDAO acconutDAO;
+	private AcconutDAO accountDAO;
+	private UserDTO userDTO;
 	
 	public AccountService() {
-		this.acconutDAO=new AcconutDAO();
-	}
-	
-	public void join(HttpServletRequest request, ActionForward af) throws Exception {
-		AccountDTO accountDTO = new AccountDTO();
-		accountDTO.setAcc_num(request.getParameter("ACCOUNT_NUM"));
-
-		int result = acconutDAO.join(accountDTO);
-		String str = "계좌 생성 실패";
-		if (result>0) {
-			str = "계좌 생성 성공";
-		}
-		
-		request.setAttribute("result", str);
-		request.setAttribute("path", "./list.do");
-		
-		af.setFlag(true);
-		af.setPath("/WEB-INF/views/commons/result.jsp");
-		
+		this.accountDAO=new AcconutDAO();
+		this.userDTO = new UserDTO();
 	}
 	
 	public ActionForward getList(HttpServletRequest request, ActionForward af) throws Exception {
-		AccountDTO accountDTO = (AccountDTO)request.getSession().getAttribute("list");
+		UserDTO userDTO = (UserDTO)request.getSession().getAttribute("user");
 		
-		List<AccountDTO> ar = acconutDAO.getList(accountDTO);
-		request.setAttribute("list", ar);
+		List<AccountDTO> ar = accountDAO.getList(userDTO);
+		request.setAttribute("list", accountDAO.getList(userDTO));
 		af.setFlag(true);
 		af.setPath("/WEB-INF/views/accounts/list.jsp");
 		

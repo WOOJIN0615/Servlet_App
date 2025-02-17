@@ -44,15 +44,6 @@ public class AccountController extends HttpServlet {
 			case "list.do":
 				accountService.getList(request, af);
 				break;
-			case "add.do":
-				String method = request.getMethod();
-				if (method.toUpperCase().equals("POST")) {
-					accountService.join(request, af);
-				}else {
-					af.setFlag(true);
-					af.setPath("/WEB-INF/views/accounts/add.jsp");
-				}
-				break;
 			}
 			
 		}catch (Exception e) {
